@@ -7,7 +7,6 @@ import com.matmazur.springvalidationboot.myValidators.constraints.NotBadWord;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class BadWordsValidator implements ConstraintValidator<NotBadWord, String> {
@@ -24,35 +23,33 @@ public class BadWordsValidator implements ConstraintValidator<NotBadWord, String
 
         boolean status = true;
 
-        for (Lang l:languages){
-            if (l==Lang.PL){
-                status=polishFilter(s);
-            }else if (l==Lang.ENG){
-                status=englishFilter(s);
-            }
+        for (Lang l : languages) {
+            if (l == Lang.PL)
+                status &= polishFilter(s);
+            if (l == Lang.ENG)
+                status = status && englishFilter(s);
         }
         return status;
     }
 
-    private boolean polishFilter(String message) {
+    private boolean polishFilter(String text) {
 
-        List<String> curseWords = Arrays.asList("kurwa", "dupa", "chuj", "huj");
-
-        return coreFilter(curseWords, message);
+        List<String> curseWords = Arrays.asList("kurwa", "dupa", "chuj", "huj", "pierdol");
+        return coreFilter(curseWords, text);
     }
 
-    private boolean englishFilter(String message) {
+    private boolean englishFilter(String text) {
 
         List<String> curseWords = Arrays.asList("fuck", "twat", "cunt", "ass");
-
-        return coreFilter(curseWords, message);
+        return coreFilter(curseWords, text);
     }
 
+    private boolean coreFilter(List<String> languageList, String text) {
 
-    private boolean coreFilter(List<String> languageList, String message) {
-
-        List<String> messageToWords = Arrays.asList(message.split(" "));
-
-        return !Collections.disjoint(languageList, messageToWords);
+        for (String s : languageList) {
+            if (text.toLowerCase().contains(s.toLowerCase()))
+                return false;
+        }
+        return true;
     }
 }
