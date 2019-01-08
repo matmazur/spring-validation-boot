@@ -21,7 +21,7 @@ public @interface Divided {
 
     Class<? extends Payload>[] payload() default {};
 
-    String message() default "Number should be dividable {by}, but ${validatedValue} isn't";
+    String message() default "{com.matmazur.springvalidationboot.constraints.Divided.message}";
 
     int by() default 1;
 }

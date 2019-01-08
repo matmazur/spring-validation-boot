@@ -11,13 +11,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+import java.util.Locale;
+
 @SpringBootApplication
 public class SpringValidationBootApplication {
 
     public static void main(String[] args) {
 
         ConfigurableApplicationContext context = SpringApplication.run(SpringValidationBootApplication.class, args);
-
+        Locale.setDefault(new Locale("en", "EN"));
 //        MessageService service = context.getBean(MessageService.class);
 //
 //        //My intention here is testing validation of explicit words in strings of words
@@ -38,9 +40,6 @@ public class SpringValidationBootApplication {
         testNumberService.validateAndPrintNumber(new TestNumber(1));
         testNumberService.validateAndPrintNumber(new TestNumber(2));
         testNumberService.validateAndPrintNumber(new TestNumber(8));
-
-
-
 
 
         context.close();
