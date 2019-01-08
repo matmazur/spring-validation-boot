@@ -1,5 +1,8 @@
 package com.matmazur.springvalidationboot.myValidators.constraints;
 
+import com.matmazur.springvalidationboot.myValidators.validators.DividedValidator;
+
+import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -11,13 +14,14 @@ import static java.lang.annotation.ElementType.*;
 @Target(value = {FIELD, METHOD, CONSTRUCTOR, ANNOTATION_TYPE, PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@Constraint(validatedBy = {DividedValidator.class})
 public @interface Divided {
 
-     Class<?>[] groups() default {};
+    Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-    String message() default "Number should be dividable {by}";
+    String message() default "Number should be dividable {by}, but ${validatedValue} isn't";
 
     int by() default 1;
 }

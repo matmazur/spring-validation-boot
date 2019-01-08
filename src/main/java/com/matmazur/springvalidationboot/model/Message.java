@@ -1,7 +1,6 @@
 package com.matmazur.springvalidationboot.model;
 
 import com.matmazur.springvalidationboot.common.Lang;
-import com.matmazur.springvalidationboot.myValidators.constraints.Divided;
 import com.matmazur.springvalidationboot.myValidators.constraints.NotBadWord;
 
 import javax.validation.constraints.NotBlank;
@@ -14,8 +13,6 @@ public class Message {
     @NotBadWord(lang = {Lang.ENG, Lang.PL})
     @Size(min = 2, max = 200)
     private String message;
-    @Divided(by = 5)
-    private int testNumber;
 
     public Message(@NotBlank String name, String message) {
         this.name = name;
