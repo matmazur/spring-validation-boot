@@ -1,5 +1,6 @@
 package com.matmazur.springvalidationboot.myValidators;
 
+import com.matmazur.springvalidationboot.myValidators.algorithms.EvenNumberStringValidator;
 import com.matmazur.springvalidationboot.myValidators.algorithms.EvenNumberValidator;
 
 import javax.validation.Constraint;
@@ -12,7 +13,7 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 
 @Documented
-@Constraint(validatedBy = EvenNumberValidator.class)
+@Constraint(validatedBy = {EvenNumberValidator.class, EvenNumberStringValidator.class})
 @Target({FIELD, ANNOTATION_TYPE, METHOD, CONSTRUCTOR, PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EvenNumber {
