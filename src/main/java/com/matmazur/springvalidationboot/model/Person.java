@@ -1,38 +1,37 @@
 package com.matmazur.springvalidationboot.model;
 
-import com.matmazur.springvalidationboot.RealEmail;
+import com.matmazur.springvalidationboot.myValidators.RealEmail;
 
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 public class Person {
 
-    @NotNull
-    @Size(min = 2, max = 20)
+
+    @NotBlank
     private String name;
-    @NotNull
-    @Size(min = 2, max = 20)
+    @NotBlank
     private String surname;
     @Digits(integer = 4,fraction = 0)
     private int idNumber;
-    @NotNull
     @Size(min = 8, max = 8)
     private String pesel;
-    @NotNull
     @RealEmail
     private String email;
+    private int numberToValidate;
 
 
     public Person() {
     }
 
-    public Person(String name, String surname, int idNumber, String pesel, String email) {
+    public Person(String name, String surname, int idNumber, String pesel, String email, int numberToValidate) {
         this.name = name;
         this.surname = surname;
         this.idNumber = idNumber;
         this.pesel = pesel;
         this.email = email;
+        this.numberToValidate=numberToValidate;
     }
 
     @Override
@@ -43,6 +42,7 @@ public class Person {
                 ", idNumber=" + idNumber +
                 ", pesel='" + pesel + '\'' +
                 ", email='" + email + '\'' +
+                ", numberToValidate=" + numberToValidate +
                 '}';
     }
 
@@ -84,5 +84,13 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getNumberToValidate() {
+        return numberToValidate;
+    }
+
+    public void setNumberToValidate(int numberToValidate) {
+        this.numberToValidate = numberToValidate;
     }
 }

@@ -1,4 +1,4 @@
-package com.matmazur.springvalidationboot;
+package com.matmazur.springvalidationboot.myValidators;
 
 import org.hibernate.validator.constraints.Email;
 
