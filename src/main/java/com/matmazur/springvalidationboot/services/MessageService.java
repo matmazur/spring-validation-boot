@@ -18,7 +18,7 @@ public class MessageService {
         this.validator = validator;
     }
 
-    public void verifyAndPristMessage(Message message) {
+    public void verifyAndPrintMessage(Message message) {
 
         Set<ConstraintViolation<Message>> errors = validator.validate(message);
         if (errors.isEmpty()) {

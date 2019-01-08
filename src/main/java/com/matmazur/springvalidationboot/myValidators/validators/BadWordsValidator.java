@@ -31,16 +31,16 @@ public class BadWordsValidator implements ConstraintValidator<NotBadWord, String
         return status;
     }
 
-    private boolean polishFilter(String text) {
+    private boolean englishFilter(String text) {
 
-        List<String> curseWords = Arrays.asList("kurwa", "dupa", "chuj", "huj", "pierdol");
+        List<String> curseWords = Arrays.asList("fuck", "twat", "cunt", "ass");
 
         return coreFilter(curseWords, text);
     }
 
-    private boolean englishFilter(String text) {
+    private boolean polishFilter(String text) {
 
-        List<String> curseWords = Arrays.asList("fuck", "twat", "cunt", "ass");
+        List<String> curseWords = Arrays.asList("kurwa", "dupa", "chuj", "huj", "pierdol");
 
         return coreFilter(curseWords, text);
     }

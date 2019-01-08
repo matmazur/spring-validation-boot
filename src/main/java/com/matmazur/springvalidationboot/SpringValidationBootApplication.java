@@ -27,9 +27,9 @@ public class SpringValidationBootApplication {
         Message badMsg = new Message("badMsg", "fuck potato hegemony");
         Message worstMsg = new Message("worstMsg", "Lechia lechiiijka pany KuRWAaaaa oeoee");
 
-        service.verifyAndPristMessage(goodMsg);
-        service.verifyAndPristMessage(badMsg);
-        service.verifyAndPristMessage(worstMsg);
+        service.verifyAndPrintMessage(goodMsg);
+        service.verifyAndPrintMessage(badMsg);
+        service.verifyAndPrintMessage(worstMsg);
 
         context.close();
     }
