@@ -18,9 +18,9 @@ public class SpringValidationBootApplication {
 
         ConfigurableApplicationContext context = SpringApplication.run(SpringValidationBootApplication.class, args);
         PersonValidationService service = context.getBean(PersonValidationService.class);
-        Person person1 = new Person("Rick", "Jimeneez", 5, "654465", "");
-        Person person2 = new Person("Mike", "Right", 543, "12345678", "mike@gmail.pl");
-        Person person3 = new Person("Buck", "semiright", 1235, "65664465", "buck@gmail");
+        Person person1 = new Person("Rick", "Jimeneez", 5, "654465", "",4);
+        Person person2 = new Person("Mike", "Right", 543, "12345678", "mike@gmail.pl",6);
+        Person person3 = new Person("Buck", "semiright", 1235, "65664465", "buck@gmail",1);
 
         service.addPerson(person1);
         service.addPerson(person2);

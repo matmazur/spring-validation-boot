@@ -1,5 +1,6 @@
 package com.matmazur.springvalidationboot.model;
 
+import com.matmazur.springvalidationboot.myValidators.EvenNumber;
 import com.matmazur.springvalidationboot.myValidators.RealEmail;
 
 import javax.validation.constraints.Digits;
@@ -19,6 +20,7 @@ public class Person {
     private String pesel;
     @RealEmail
     private String email;
+    @EvenNumber
     private int numberToValidate;
 
 

@@ -32,7 +32,7 @@ public class PersonValidationService {
         } else {
             System.err.printf("There are errors(%d):\n", errors.getErrorCount());
             for (ObjectError err : errors.getAllErrors()) {
-                System.err.println(err + " -- " + err.getDefaultMessage());
+                System.err.println(err.getDefaultMessage());
             }
         }
     }
