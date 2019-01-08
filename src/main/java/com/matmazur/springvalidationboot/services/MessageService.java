@@ -1,12 +1,13 @@
 package com.matmazur.springvalidationboot.services;
 
+
 import com.matmazur.springvalidationboot.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BeanPropertyBindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ObjectError;
-import org.springframework.validation.Validator;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+import java.util.Set;
 
 @Service
 public class MessageService {
@@ -18,17 +19,15 @@ public class MessageService {
         this.validator = validator;
     }
 
-    public void printWords(Message message) {
+    public void verifyAndPristMessage(Message message) {
 
-        Errors errors = new BeanPropertyBindingResult("message", "message");
-        validator.validate(message, errors);
-
-        if (!errors.hasErrors()) {
+        Set<ConstraintViolation<Message>> errors = validator.validate(message);
+        if (errors.isEmpty()) {
             System.out.println(message.getMessage());
         } else {
-            System.err.printf("%d errors found!\n", errors.getAllErrors().size());
-            for (ObjectError err : errors.getAllErrors()) {
-                System.err.println(message.getName() + " -- " + err.getDefaultMessage());
+            System.err.printf("%d errors found!\n", errors.size());
+            for (ConstraintViolation err : errors) {
+                System.err.println(err.getInvalidValue() + " -- " + err.getMessage());
             }
         }
     }
