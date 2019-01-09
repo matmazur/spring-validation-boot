@@ -1,16 +1,16 @@
 package com.matmazur.springvalidationboot.myValidators.validators;
 
-import com.matmazur.springvalidationboot.myValidators.constraints.Divided;
+import com.matmazur.springvalidationboot.myValidators.constraints.Divisible;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class DividedValidator implements ConstraintValidator<Divided, Integer> {
+public class DividedValidator implements ConstraintValidator<Divisible, Integer> {
 
     private int number;
 
     @Override
-    public void initialize(Divided constraintAnnotation) {
+    public void initialize(Divisible constraintAnnotation) {
         this.number = constraintAnnotation.by();
     }
 

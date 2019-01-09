@@ -18,7 +18,7 @@ import static java.lang.annotation.ElementType.*;
 @Constraint(validatedBy = {BadWordsValidator.class})
 public @interface NotBadWord {
 
-    String message() default "explicit words are not allowed";
+    String message() default "{com.matmazur.springvalidationboot.constraints.NotBadWord.message}";
 
     Class<?>[] groups() default {};
 

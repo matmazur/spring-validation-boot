@@ -1,10 +1,10 @@
 package com.matmazur.springvalidationboot.model;
 
-import com.matmazur.springvalidationboot.myValidators.constraints.Divided;
+import com.matmazur.springvalidationboot.myValidators.constraints.Divisible;
 
 public class TestNumber {
 
-    @Divided(by = 5)
+    @Divisible(by = 5)
     private Integer number;
 
     public TestNumber(Integer number) {

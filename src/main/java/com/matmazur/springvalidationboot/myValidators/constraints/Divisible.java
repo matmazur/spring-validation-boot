@@ -15,13 +15,13 @@ import static java.lang.annotation.ElementType.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Constraint(validatedBy = {DividedValidator.class})
-public @interface Divided {
+public @interface Divisible {
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-    String message() default "{com.matmazur.springvalidationboot.constraints.Divided.message}";
+    String message() default "{com.matmazur.springvalidationboot.constraints.Divisible.message}";
 
     int by() default 1;
 }

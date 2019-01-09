@@ -26,7 +26,7 @@ public class MessageService {
         } else {
             System.err.printf("%d errors found!\n", errors.size());
             for (ConstraintViolation err : errors) {
-                System.err.println(err.getInvalidValue() + " -- " + err.getMessage());
+                System.err.println(err.getMessage());
             }
         }
     }

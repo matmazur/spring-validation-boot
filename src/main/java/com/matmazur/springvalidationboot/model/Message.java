@@ -14,7 +14,7 @@ public class Message {
     @Size(min = 2, max = 200)
     private String message;
 
-    public Message(@NotBlank String name, String message) {
+    public Message(String name, String message) {
         this.name = name;
         this.message = message;
     }
