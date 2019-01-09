@@ -1,6 +1,8 @@
 package com.matmazur.springvalidationboot.services;
 
 import com.matmazur.springvalidationboot.model.Message;
+import com.matmazur.springvalidationboot.myValidators.groups.Complete;
+import com.matmazur.springvalidationboot.myValidators.groups.Draft;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +22,7 @@ public class MessageService {
 
     public void verifyAndPrintMessage(Message message) {
 
-        Set<ConstraintViolation<Message>> errors = validator.validate(message);
+        Set<ConstraintViolation<Message>> errors = validator.validate(message, Complete.class);
         if (errors.isEmpty()) {
             System.out.println(message.getMessage());
         } else {

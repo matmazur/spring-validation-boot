@@ -21,15 +21,15 @@ public class SpringValidationBootApplication {
         ConfigurableApplicationContext context = SpringApplication.run(SpringValidationBootApplication.class, args);
         Locale.setDefault(new Locale("en", "EN"));
         MessageService service = context.getBean(MessageService.class);
+//
+//        //My intention here is testing validation of explicit words in strings of words
+//        //All materials that can be seen here are being used for purposes clearly scientific
+//        //I do however agree with ending potato hegemony for good
+//        //Ireland please know that I respect you and it has nothing to do with your 'tayto affections
 
-        //My intention here is testing validation of explicit words in strings of words
-        //All materials that can be seen here are being used for purposes clearly scientific
-        //I do however agree with ending potato hegemony for good
-        //Ireland please know that I respect you and it has nothing to do with your 'tayto affections
-
-        Message goodMsg = new Message("", "to hell with potato hegemony");
+        Message goodMsg = new Message("okMsg", "to hell with potato hegemony");
         Message badMsg = new Message("badMsg", "fuck potato hegemony");
-        Message worstMsg = new Message("worstMsg", "Lechia lechiiijka pany KuRWAaaaa oeoee");
+        Message worstMsg = new Message("worstMsg", "");
 
         service.verifyAndPrintMessage(goodMsg);
         service.verifyAndPrintMessage(badMsg);

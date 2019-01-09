@@ -2,16 +2,18 @@ package com.matmazur.springvalidationboot.model;
 
 import com.matmazur.springvalidationboot.common.Lang;
 import com.matmazur.springvalidationboot.myValidators.constraints.NotBadWord;
+import com.matmazur.springvalidationboot.myValidators.groups.Complete;
+import com.matmazur.springvalidationboot.myValidators.groups.Draft;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 public class Message {
 
-    @NotBlank
+    @NotBlank(groups = {Draft.class, Complete.class})
     private String name;
-    @NotBadWord(lang = {Lang.ENG, Lang.PL})
-    @Size(min = 2, max = 200)
+    @NotBadWord(lang = {Lang.ENG, Lang.PL}, groups = {Complete.class})
+    @Size(min = 2, max = 200, groups = {Complete.class})
     private String message;
 
     public Message(String name, String message) {
